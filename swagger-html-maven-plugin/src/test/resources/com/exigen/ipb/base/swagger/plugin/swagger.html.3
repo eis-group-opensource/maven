@@ -1,0 +1,746 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Policy personal</title>
+	</head>
+	<body>
+
+	<div id="contentBox">
+		<table id="content">
+			<tbody>
+				<tr>
+					<th colspan="3" style="text-align: center;">
+						<h5>Table of Contents</h5>
+					</th>
+				</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#locateCoverages"><code>/v1/policies-cl/coverages</code></a></td>
+							
+							<td>locateCoverages</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#locateParties"><code>/v1/policies-cl/parties</code></a></td>
+							
+							<td>locateParties</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#locateRiskItem"><code>/v1/policies-cl/riskitems</code></a></td>
+							
+							<td>locateRiskItem</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#locateScheduled"><code>/v1/policies-cl/scheduled</code></a></td>
+							
+							<td>locateScheduled</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#resolveCLPolicies"><code>/v1/policies-cl/policies</code></a></td>
+							
+							<td>resolveCLPolicies</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPolicyDetails"><code>/policies/{policy-number}</code></a></td>
+							<td>Returns policy details</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPolicyTransactionHistory"><code>/policies/{policy-number}/history</code></a></td>
+							<td>Returns policy transaction history</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#renew"><code>/policies/{policy-number}/request-renewal</code></a></td>
+							<td>Renews policy</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#resolveActivePolicies"><code>/policies/active</code></a></td>
+							<td>Returns list of active policies</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#resolveExpiredPolicies"><code>/policies/expired</code></a></td>
+							<td>Returns list of expired policies</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#resolvePolicies"><code>/policies</code></a></td>
+							<td>Returns list of policies</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#resolveQuotes"><code>/quotes</code></a></td>
+							<td>Returns list of qoutes</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAvailableRiskItems"><code>/products/{productCode}/{productVersion}/risk-items</code></a></td>
+							<td>Returns risk items names from product configuration</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPolicyCoverages"><code>/products/{productCode}/{productVersion}/coverages</code></a></td>
+							<td>Returns policy coverages from product configuration</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getRiskItemCoverages"><code>/products/{productCode}/{productVersion}/risk-items/{riskItemType}/coverages</code></a></td>
+							<td>Returns risk item coverages from product configuration</td>
+							
+						</tr>
+			</tbody>
+		</table>
+
+	<br/><br/>
+
+	<div id="operations">
+					<div id="operation"><a name="locateCoverages"/>
+
+					
+					<h2>locateCoverages</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/v1/policies-cl/coverages</td>
+								<td>application/json</td>
+								
+								<td><p><em>criteria</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="locateParties"/>
+
+					
+					<h2>locateParties</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/v1/policies-cl/parties</td>
+								<td>application/json</td>
+								
+								<td><p><em>criteria</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="locateRiskItem"/>
+
+					
+					<h2>locateRiskItem</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/v1/policies-cl/riskitems</td>
+								<td>application/json</td>
+								
+								<td><p><em>criteria</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="locateScheduled"/>
+
+					
+					<h2>locateScheduled</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/v1/policies-cl/scheduled</td>
+								<td>application/json</td>
+								
+								<td><p><em>criteria</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="resolveCLPolicies"/>
+
+					
+					<h2>resolveCLPolicies</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/v1/policies-cl/policies</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em></p><p><em>limit</em></p><p><em>criteria</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="getPolicyDetails"/>
+
+					<h2>Returns policy details</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/policies/{policy-number}</td>
+								<td>application/json</td>
+								<td><p><em>policy-number</em></p></td>
+								<td><p><em>transactionEffectiveDate</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "revisionNumber" : 123,
+  "expirationDate" : "2016-14-07",
+  "expired" : true,
+  "currencyCode" : "string",
+  "productCode" : "string",
+  "customerNumber" : "string",
+  "lobCd" : "string",
+  "transactionTypeCd" : "string",
+  "policyStatusCd" : "string",
+  "productVersion" : 10000.25,
+  "transactionEffectiveDate" : "2016-14-07",
+  "totalPremium" : 10000.25,
+  "lob" : "string",
+  "transactionType" : "string",
+  "description" : "string",
+  "policyNumber" : "string",
+  "effectiveDate" : "2016-14-07"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPolicyTransactionHistory"/>
+
+					<h2>Returns policy transaction history</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/policies/{policy-number}/history</td>
+								<td>application/json</td>
+								<td><p><em>policy-number</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "transactionType" : "string",
+  "revisionNumber" : 123,
+  "reason" : "string",
+  "performer" : {
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "transactionTypeCd" : "string",
+  "endingTotalPremium" : 10000.25,
+  "transactionTotalPremium" : 10000.25,
+  "transactionEffectiveDate" : "2016-14-07",
+  "transactionDate" : "2016-14-07",
+  "requestor" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="renew"/>
+
+					<h2>Renews policy</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/policies/{policy-number}/request-renewal</td>
+								<td>application/json</td>
+								<td><p><em>policy-number</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "message" : "string",
+  "policyNumber" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="resolveActivePolicies"/>
+
+					<h2>Returns list of active policies</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/policies/active</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em></p><p><em>limit</em></p><p><em>customerNumber</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "revisionNumber" : 123,
+  "expirationDate" : "2016-14-07",
+  "expired" : true,
+  "currencyCode" : "string",
+  "productCode" : "string",
+  "customerNumber" : "string",
+  "lobCd" : "string",
+  "transactionTypeCd" : "string",
+  "policyStatusCd" : "string",
+  "productVersion" : 10000.25,
+  "transactionEffectiveDate" : "2016-14-07",
+  "totalPremium" : 10000.25,
+  "lob" : "string",
+  "transactionType" : "string",
+  "description" : "string",
+  "policyNumber" : "string",
+  "effectiveDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="resolveExpiredPolicies"/>
+
+					<h2>Returns list of expired policies</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/policies/expired</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em></p><p><em>limit</em></p><p><em>customerNumber</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "revisionNumber" : 123,
+  "expirationDate" : "2016-14-07",
+  "expired" : true,
+  "currencyCode" : "string",
+  "productCode" : "string",
+  "customerNumber" : "string",
+  "lobCd" : "string",
+  "transactionTypeCd" : "string",
+  "policyStatusCd" : "string",
+  "productVersion" : 10000.25,
+  "transactionEffectiveDate" : "2016-14-07",
+  "totalPremium" : 10000.25,
+  "lob" : "string",
+  "transactionType" : "string",
+  "description" : "string",
+  "policyNumber" : "string",
+  "effectiveDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="resolvePolicies"/>
+
+					<h2>Returns list of policies</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/policies</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em></p><p><em>limit</em></p><p><em>customerNumber</em></p><p><em>transactionTypeCd</em></p><p><em>policyStatusCd</em></p><p><em>expired</em></p><p><em>expirationDateFrom</em></p><p><em>expirationDateTill</em></p><p><em>effectiveDateFrom</em></p><p><em>effectiveDateTill</em></p><p><em>sort</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "revisionNumber" : 123,
+  "expirationDate" : "2016-14-07",
+  "expired" : true,
+  "currencyCode" : "string",
+  "productCode" : "string",
+  "customerNumber" : "string",
+  "lobCd" : "string",
+  "transactionTypeCd" : "string",
+  "policyStatusCd" : "string",
+  "productVersion" : 10000.25,
+  "transactionEffectiveDate" : "2016-14-07",
+  "totalPremium" : 10000.25,
+  "lob" : "string",
+  "transactionType" : "string",
+  "description" : "string",
+  "policyNumber" : "string",
+  "effectiveDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="resolveQuotes"/>
+
+					<h2>Returns list of qoutes</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/quotes</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em></p><p><em>limit</em></p><p><em>customerNumber</em></p><p><em>transactionTypeCd</em></p><p><em>policyStatusCd</em></p><p><em>expired</em></p><p><em>expirationDateFrom</em></p><p><em>expirationDateTill</em></p><p><em>effectiveDateFrom</em></p><p><em>effectiveDateTill</em></p><p><em>sort</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "revisionNumber" : 123,
+  "expirationDate" : "2016-14-07",
+  "expired" : true,
+  "currencyCode" : "string",
+  "productCode" : "string",
+  "customerNumber" : "string",
+  "lobCd" : "string",
+  "transactionTypeCd" : "string",
+  "policyStatusCd" : "string",
+  "productVersion" : 10000.25,
+  "transactionEffectiveDate" : "2016-14-07",
+  "totalPremium" : 10000.25,
+  "lob" : "string",
+  "transactionType" : "string",
+  "description" : "string",
+  "policyNumber" : "string",
+  "effectiveDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getAvailableRiskItems"/>
+
+					<h2>Returns risk items names from product configuration</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/products/{productCode}/{productVersion}/risk-items</td>
+								<td>application/json</td>
+								<td><p><em>productCode</em></p><p><em>productVersion</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ "string" ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPolicyCoverages"/>
+
+					<h2>Returns policy coverages from product configuration</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/products/{productCode}/{productVersion}/coverages</td>
+								<td>application/json</td>
+								<td><p><em>productCode</em></p><p><em>productVersion</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "name" : "string",
+  "coverageCd" : "string",
+  "appliedRule" : "string",
+  "attributes" : [ {
+    "dataType" : "string",
+    "lookupName" : "string",
+    "name" : "string"
+  } ]
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getRiskItemCoverages"/>
+
+					<h2>Returns risk item coverages from product configuration</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/policy-rs/v1</td>
+								<td>/products/{productCode}/{productVersion}/risk-items/{riskItemType}/coverages</td>
+								<td>application/json</td>
+								<td><p><em>productCode</em></p><p><em>productVersion</em></p><p><em>riskItemType</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "name" : "string",
+  "coverageCd" : "string",
+  "appliedRule" : "string",
+  "attributes" : [ {
+    "dataType" : "string",
+    "lookupName" : "string",
+    "name" : "string"
+  } ]
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+	</div>
+	</div>
+	
+	</body>
+</html>

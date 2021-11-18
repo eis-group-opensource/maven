@@ -1,0 +1,719 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Billing Core</title>
+	</head>
+	<body>
+
+	<div id="contentBox">
+		<table id="content">
+			<tbody>
+				<tr>
+					<th colspan="3" style="text-align: center;">
+						<h5>Table of Contents</h5>
+					</th>
+				</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#downloadStatement"><code>/accounts/{accountNumber}/statement</code></a></td>
+							
+							<td>downloadStatement</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAccountByNumber"><code>/accounts/{accountNumber}</code></a></td>
+							<td>Returns a particular Billing Account&#39;s details by provided Billing Account number</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAccountByPolicy"><code>/accounts</code></a></td>
+							
+							<td>getAccountByPolicy</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getInstallmentsList"><code>/accounts/{accountNumber}/installments</code></a></td>
+							
+							<td>getInstallmentsList</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPayments"><code>/accounts/{accountNumber}/payments</code></a></td>
+							<td>Returns a list of payment transactions for Billing Account by provided Billing Account number</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getTransactions"><code>/accounts/{accountNumber}/transactions</code></a></td>
+							
+							<td>getTransactions</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#payment"><code>/accounts/{accountNumber}/payments</code></a></td>
+							
+							<td>payment</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#paymentPerAllocations"><code>/accounts/{accountNumber}/payments/pay-by-policy</code></a></td>
+							
+							<td>paymentPerAllocations</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateBillingAccount"><code>/accounts/{accountNumber}</code></a></td>
+							
+							<td>updateBillingAccount</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addPaymentMethod"><code>/customers/{customerNumber}/payment-methods</code></a></td>
+							
+							<td>addPaymentMethod</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deletePaymentMethod"><code>/customers/{customerNumber}/payment-methods/{paymentMethodId}</code></a></td>
+							
+							<td>deletePaymentMethod</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#editPaymentMethod"><code>/customers/{customerNumber}/payment-methods/{paymentMethodId}</code></a></td>
+							
+							<td>editPaymentMethod</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAccounts"><code>/customers/{customerNumber}/accounts</code></a></td>
+							<td>Returns a list of Billing Accounts for a particular Customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPaymentMethodDetails"><code>/customers/{customerNumber}/payment-methods/{paymentMethodId}</code></a></td>
+							
+							<td>getPaymentMethodDetails</td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPaymentMethods"><code>/customers/{customerNumber}/payment-methods</code></a></td>
+							
+							<td>getPaymentMethods</td>
+						</tr>
+			</tbody>
+		</table>
+
+	<br/><br/>
+
+	<div id="operations">
+					<div id="operation"><a name="downloadStatement"/>
+
+					
+					<h2>downloadStatement</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}/statement</td>
+								<td>application/octet-streamapplication/json</td>
+								<td><p><em>accountNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="getAccountByNumber"/>
+
+					<h2>Returns a particular Billing Account&#39;s details by provided Billing Account number</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em> - Billing Account number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "billType" : "string",
+  "accountName" : "string",
+  "accountNumber" : "string",
+  "accountStatus" : "string",
+  "customerNumber" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getAccountByPolicy"/>
+
+					
+					<h2>getAccountByPolicy</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts</td>
+								<td>application/json</td>
+								
+								<td><p><em>policyNumber</em></p><p><em>effectiveDate</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "billType" : "string",
+  "accountName" : "string",
+  "accountNumber" : "string",
+  "accountStatus" : "string",
+  "customerNumber" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getInstallmentsList"/>
+
+					
+					<h2>getInstallmentsList</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}/installments</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "amount" : {
+    "value" : 10000.25,
+    "currency" : "string"
+  },
+  "status" : "string",
+  "type" : "string",
+  "dueDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPayments"/>
+
+					<h2>Returns a list of payment transactions for Billing Account by provided Billing Account number</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}/payments</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em> - Billing Account number</p></td>
+								<td><p><em>offset</em> - Optional pagination start index</p><p><em>limit</em> - Optional number of records per page</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "paymentAllocations" : [ {
+    "invoiceNumber" : "string",
+    "invoiceItemsAllocationAmount" : 10000.25
+  } ],
+  "paymentAmount" : 10000.25,
+  "transactionType" : "string",
+  "transactionDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getTransactions"/>
+
+					
+					<h2>getTransactions</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}/transactions</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "amount" : {
+    "value" : 10000.25,
+    "currency" : "string"
+  },
+  "status" : "string",
+  "subType" : "string",
+  "type" : "string",
+  "allocations" : [ {
+    "amount" : "",
+    "policy" : {
+      "policyNumber" : "string",
+      "effectiveDate" : "2016-14-07"
+    }
+  } ],
+  "transactionDate" : "2016-14-07"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="payment"/>
+
+					
+					<h2>payment</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}/payments</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em></p></td>
+								<td><p><em>policyNumber</em></p><p><em>effectiveDate</em></p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "paymentNumber" : "string",
+  "transactionNumber" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="paymentPerAllocations"/>
+
+					
+					<h2>paymentPerAllocations</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}/payments/pay-by-policy</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "paymentNumber" : "string",
+  "transactionNumber" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateBillingAccount"/>
+
+					
+					<h2>updateBillingAccount</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/accounts/{accountNumber}</td>
+								<td>application/json</td>
+								<td><p><em>accountNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="addPaymentMethod"/>
+
+					
+					<h2>addPaymentMethod</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/customers/{customerNumber}/payment-methods</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="deletePaymentMethod"/>
+
+					
+					<h2>deletePaymentMethod</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/customers/{customerNumber}/payment-methods/{paymentMethodId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em></p><p><em>paymentMethodId</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="editPaymentMethod"/>
+
+					
+					<h2>editPaymentMethod</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/customers/{customerNumber}/payment-methods/{paymentMethodId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em></p><p><em>paymentMethodId</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="getAccounts"/>
+
+					<h2>Returns a list of Billing Accounts for a particular Customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/customers/{customerNumber}/accounts</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - Customer number to return Billing Accounts for</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "billType" : "string",
+  "accountName" : "string",
+  "accountNumber" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPaymentMethodDetails"/>
+
+					
+					<h2>getPaymentMethodDetails</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/customers/{customerNumber}/payment-methods/{paymentMethodId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em></p><p><em>paymentMethodId</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "creditCard" : {
+    "fullNumber" : "string",
+    "expirationDate" : "2016-14-07",
+    "billingAddress" : {
+      "postalCode" : "string",
+      "stateProvCd" : "string",
+      "county" : "string",
+      "countryCd" : "string",
+      "addressLine3" : "string",
+      "addressLine2" : "string",
+      "addressLine1" : "string",
+      "city" : "string"
+    },
+    "number" : "string",
+    "fullName" : "string",
+    "type" : "string"
+  },
+  "savedPaymentMethod" : {
+    "id" : 123456789,
+    "description" : "string",
+    "type" : "string"
+  },
+  "eft" : {
+    "lastName" : "string",
+    "accountNumber" : "string",
+    "transitNumber" : "string",
+    "countryCd" : "string",
+    "bankName" : "string",
+    "firstName" : "string"
+  },
+  "type" : "string",
+  "cheque" : {
+    "payeeName" : "string",
+    "chequeNumber" : "string",
+    "bankAccountNumber" : "string",
+    "bankName" : "string",
+    "chequeDate" : "2016-14-07",
+    "bankCode" : "string"
+  }
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPaymentMethods"/>
+
+					
+					<h2>getPaymentMethods</h2>
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/billing-rs/v1</td>
+								<td>/customers/{customerNumber}/payment-methods</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "id" : 123456789,
+  "description" : "string",
+  "type" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+	</div>
+	</div>
+	
+	</body>
+</html>

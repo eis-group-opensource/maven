@@ -1,0 +1,2929 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Customer Core</title>
+	</head>
+	<body>
+
+	<div id="contentBox">
+		<table id="content">
+			<tbody>
+				<tr>
+					<th colspan="3" style="text-align: center;">
+						<h5>Table of Contents</h5>
+					</th>
+				</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#createCampaign"><code>/campaigns</code></a></td>
+							<td>Creates new campaign in Draft status</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAssociatedCustomers"><code>/campaigns/{campaignId}/associated-customers</code></a></td>
+							<td>Returns list of associated customers</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getCampaign"><code>/campaigns/{campaignId}</code></a></td>
+							<td>Return existing campaign</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getCampaigns"><code>/campaigns</code></a></td>
+							<td>Returns list of campaigns</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPerformanceSummary"><code>/campaigns/{campaignId}/performance-summary</code></a></td>
+							<td>Return campaign&#39;s performance summary</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateCampaign"><code>/campaigns/{campaignId}</code></a></td>
+							<td>Updates existing campaign</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#createCommunicationActivity"><code>/communications</code></a></td>
+							<td>Create new communication</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addAddress"><code>/customers/{customerNumber}/addresses</code></a></td>
+							<td>Add new address to customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addChat"><code>/customers/{customerNumber}/chats</code></a></td>
+							<td>Add new chat to customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addEmail"><code>/customers/{customerNumber}/emails</code></a></td>
+							<td>Add new email to customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addPhone"><code>/customers/{customerNumber}/phones</code></a></td>
+							<td>Add new phone to customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addSocialNet"><code>/customers/{customerNumber}/socialNets</code></a></td>
+							<td>Add new socialNet to customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#addWebAddress"><code>/customers/{customerNumber}/webAddresses</code></a></td>
+							<td>Add new webAddress to customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#createCustomer"><code>/customers</code></a></td>
+							<td>Create new customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deleteAddress"><code>/customers/{customerNumber}/addresses/{contactId}</code></a></td>
+							<td>Removes customer address</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deleteChat"><code>/customers/{customerNumber}/chats/{contactId}</code></a></td>
+							<td>Removes customer chat</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deleteEmail"><code>/customers/{customerNumber}/emails/{contactId}</code></a></td>
+							<td>Remove customer email</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deletePhone"><code>/customers/{customerNumber}/phones/{contactId}</code></a></td>
+							<td>Removes customer phone</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deleteSocialNet"><code>/customers/{customerNumber}/socialNets/{contactId}</code></a></td>
+							<td>Removes customer social net</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>DELETE</code></strong></td>
+							<td><a href="#deleteWebAddress"><code>/customers/{customerNumber}/webAddresses/{contactId}</code></a></td>
+							<td>Removes customer web address</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAddresses"><code>/customers/{customerNumber}/addresses</code></a></td>
+							<td>Gets all addresses for source customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getAnonymousCustomers"><code>/customers/anonymous</code></a></td>
+							<td>Get anonymous customer numbers</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getChats"><code>/customers/{customerNumber}/chats</code></a></td>
+							<td>Gets all chats for source customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getCustomer"><code>/customers/{customerNumber}</code></a></td>
+							<td>Get customer by customer number</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getCustomerDetails"><code>/customers/details</code></a></td>
+							<td>Gets customers short details</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getCustomers"><code>/customers</code></a></td>
+							<td>Returns list of all customers</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getCustomersWithActiveCampaigns"><code>/customers/with-active-campaigns</code></a></td>
+							<td>Get list of Customers with active Campaigns</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getEmails"><code>/customers/{customerNumber}/emails</code></a></td>
+							<td>Gets all emails for source customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getPhones"><code>/customers/{customerNumber}/phones</code></a></td>
+							<td>Gets all phones for source customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getSocialNets"><code>/customers/{customerNumber}/socialNets</code></a></td>
+							<td>Gets all social nets for source customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getWebAddresses"><code>/customers/{customerNumber}/webAddresses</code></a></td>
+							<td>Gets all we addresses for source customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateAddress"><code>/customers/{customerNumber}/addresses/{contactId}</code></a></td>
+							<td>Updates customer address</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateChat"><code>/customers/{customerNumber}/chats/{contactId}</code></a></td>
+							<td>Updates customer chat</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateCustomer"><code>/customers/{customerNumber}</code></a></td>
+							<td>Update existing customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateEmail"><code>/customers/{customerNumber}/emails/{contactId}</code></a></td>
+							<td>Update customer email</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updatePhone"><code>/customers/{customerNumber}/phones/{contactId}</code></a></td>
+							<td>Updates customer phone</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateSocialNet"><code>/customers/{customerNumber}/socialNets/{contactId}</code></a></td>
+							<td>Updates customer social net</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateWebAddress"><code>/customers/{customerNumber}/webAddresses/{contactId}</code></a></td>
+							<td>Updates customer web address</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getOpportunities"><code>/opportunities</code></a></td>
+							<td>Returns list of all opportunities</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#closeOpportunity"><code>/customers/{customerNumber}/opportunities/{opportunityId}/close</code></a></td>
+							<td>Close existing opportunity</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>POST</code></strong></td>
+							<td><a href="#createOpportunity"><code>/customers/{customerNumber}/opportunities</code></a></td>
+							<td>Create new opportunity for customer</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getOpportunities"><code>/customers/{customerNumber}/opportunities</code></a></td>
+							<td>Returns list of customer opportunities</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>GET</code></strong></td>
+							<td><a href="#getOpportunity"><code>/customers/{customerNumber}/opportunities/{opportunityId}</code></a></td>
+							<td>Return existing opportunity</td>
+							
+						</tr>
+						<tr>
+							<td style="text-align: right;"><strong><code>PUT</code></strong></td>
+							<td><a href="#updateOpportunity"><code>/customers/{customerNumber}/opportunities/{opportunityId}</code></a></td>
+							<td>Updates existing opportunity</td>
+							
+						</tr>
+			</tbody>
+		</table>
+
+	<br/><br/>
+
+	<div id="operations">
+					<div id="operation"><a name="createCampaign"/>
+
+					<h2>Creates new campaign in Draft status</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/campaigns</td>
+								<td>application/json</td>
+								
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "startDate" : "2016-14-07",
+  "campaignID" : 123456789,
+  "suspendFrom" : "2016-14-07",
+  "autoStart" : true,
+  "status" : "string",
+  "expectedRevenue" : 10000.25,
+  "channels" : [ {
+    "campaignMaterialCd" : "string",
+    "campaignChannelCd" : "string",
+    "campaignSubChannelCd" : "string"
+  } ],
+  "endDate" : "2016-14-07",
+  "actualCost" : 10000.25,
+  "suspendTo" : "2016-14-07",
+  "terminationReason" : "string",
+  "categoryCd" : "string",
+  "description" : "string",
+  "name" : "string",
+  "products" : [ {
+    "lobCd" : "string",
+    "riskCd" : "string",
+    "productCd" : "string"
+  } ],
+  "budgetCost" : 10000.25,
+  "promotionCd" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getAssociatedCustomers"/>
+
+					<h2>Returns list of associated customers</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/campaigns/{campaignId}/associated-customers</td>
+								<td>application/json</td>
+								<td><p><em>campaignId</em> - campaign identifier</p></td>
+								<td><p><em>offset</em> - start position of the first search result to be included into the result list (customers[offset] .. customers[offset + limit])</p><p><em>limit</em> - size of the result list</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "customerType" : "string",
+  "segments" : [ "string" ],
+  "paperless" : true,
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerNumber" : "string",
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "preferredWrittenLanguageCd" : "string",
+  "customerStatus" : "string",
+  "displayValue" : "string",
+  "ratingCd" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getCampaign"/>
+
+					<h2>Return existing campaign</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/campaigns/{campaignId}</td>
+								<td>application/json</td>
+								<td><p><em>campaignId</em> - campaign identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "startDate" : "2016-14-07",
+  "campaignID" : 123456789,
+  "suspendFrom" : "2016-14-07",
+  "autoStart" : true,
+  "status" : "string",
+  "expectedRevenue" : 10000.25,
+  "channels" : [ {
+    "campaignMaterialCd" : "string",
+    "campaignChannelCd" : "string",
+    "campaignSubChannelCd" : "string"
+  } ],
+  "endDate" : "2016-14-07",
+  "actualCost" : 10000.25,
+  "suspendTo" : "2016-14-07",
+  "terminationReason" : "string",
+  "categoryCd" : "string",
+  "description" : "string",
+  "name" : "string",
+  "products" : [ {
+    "lobCd" : "string",
+    "riskCd" : "string",
+    "productCd" : "string"
+  } ],
+  "budgetCost" : 10000.25,
+  "promotionCd" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getCampaigns"/>
+
+					<h2>Returns list of campaigns</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/campaigns</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em> - start position of the first search result to be included into the result list (customers[offset] .. customers[offset + limit])</p><p><em>limit</em> - size of the result list</p><p><em>campaignID</em> - campaign identificator should starting with this</p><p><em>name</em> - campaign name should contain this</p><p><em>status</em> - campaign status. Supports DRAFT, INACTIVE, ACTIVE, SUSPENDED, TERMINATED, COMPLETED, ARCHIVED</p><p><em>startDate</em> - campaign start date should be after this date</p><p><em>endDate</em> - campaign end date should be before this date</p><p><em>lineOfBusiness</em> - line of businesses assigned to campaign</p><p><em>customerNumber</em> - campaign should be assigned to this customer</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "startDate" : "2016-14-07",
+  "campaignID" : 123456789,
+  "suspendFrom" : "2016-14-07",
+  "autoStart" : true,
+  "status" : "string",
+  "expectedRevenue" : 10000.25,
+  "channels" : [ {
+    "campaignMaterialCd" : "string",
+    "campaignChannelCd" : "string",
+    "campaignSubChannelCd" : "string"
+  } ],
+  "endDate" : "2016-14-07",
+  "actualCost" : 10000.25,
+  "suspendTo" : "2016-14-07",
+  "terminationReason" : "string",
+  "categoryCd" : "string",
+  "description" : "string",
+  "name" : "string",
+  "products" : [ {
+    "lobCd" : "string",
+    "riskCd" : "string",
+    "productCd" : "string"
+  } ],
+  "budgetCost" : 10000.25,
+  "promotionCd" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPerformanceSummary"/>
+
+					<h2>Return campaign&#39;s performance summary</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/campaigns/{campaignId}/performance-summary</td>
+								<td>application/json</td>
+								<td><p><em>campaignId</em> - campaign identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "createdOpportunitiesByStatus" : {
+    "closedProductNotFit" : 123456789,
+    "inactive" : 123456789,
+    "closedLostCompetitor" : 123456789,
+    "closedNoInterest" : 123456789,
+    "closedOther" : 123456789,
+    "inPipeline" : 123456789,
+    "closed" : 123456789,
+    "quoted" : 123456789,
+    "closedWon" : 123456789
+  },
+  "policiesIssued" : 123456789,
+  "targetedLeads" : 123456789,
+  "createdOpportunities" : 123456789,
+  "totalPolicyPremium" : 10000.25,
+  "totalQuotePremium" : 10000.25,
+  "quotesCreated" : 123456789
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateCampaign"/>
+
+					<h2>Updates existing campaign</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/campaigns/{campaignId}</td>
+								<td>application/json</td>
+								<td><p><em>campaignId</em> - campaign identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "startDate" : "2016-14-07",
+  "campaignID" : 123456789,
+  "suspendFrom" : "2016-14-07",
+  "autoStart" : true,
+  "status" : "string",
+  "expectedRevenue" : 10000.25,
+  "channels" : [ {
+    "campaignMaterialCd" : "string",
+    "campaignChannelCd" : "string",
+    "campaignSubChannelCd" : "string"
+  } ],
+  "endDate" : "2016-14-07",
+  "actualCost" : 10000.25,
+  "suspendTo" : "2016-14-07",
+  "terminationReason" : "string",
+  "categoryCd" : "string",
+  "description" : "string",
+  "name" : "string",
+  "products" : [ {
+    "lobCd" : "string",
+    "riskCd" : "string",
+    "productCd" : "string"
+  } ],
+  "budgetCost" : 10000.25,
+  "promotionCd" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="createCommunicationActivity"/>
+
+					<h2>Create new communication</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/communications</td>
+								<td>application/json</td>
+								
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "entityReferenceId" : "string",
+  "directionCd" : "string",
+  "referenceDescription" : "string",
+  "description" : "string",
+  "entityTypeCd" : "string",
+  "customerNumber" : "string",
+  "channelCd" : "string",
+  "communicationId" : "string",
+  "outcome" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="addAddress"/>
+
+					<h2>Add new address to customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/addresses</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "doNotSolicitInd" : true,
+  "temporary" : true,
+  "addressLine3" : "string",
+  "addressLine2" : "string",
+  "contactMethod" : "string",
+  "addressLine1" : "string",
+  "city" : "string",
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "stateProvCd" : "string",
+  "postalCode" : "string",
+  "effectiveTo" : "2016-14-07",
+  "countryCd" : "string",
+  "contactType" : "string",
+  "comment" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="addChat"/>
+
+					<h2>Add new chat to customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/chats</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "chatId" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="addEmail"/>
+
+					<h2>Add new email to customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/emails</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "emailId" : "string",
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="addPhone"/>
+
+					<h2>Add new phone to customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/phones</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "phoneNumber" : "string",
+  "doNotSolicitInd" : true,
+  "effectiveTo" : "2016-14-07",
+  "temporary" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="addSocialNet"/>
+
+					<h2>Add new socialNet to customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/socialNets</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "socialNetId" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="addWebAddress"/>
+
+					<h2>Add new webAddress to customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/webAddresses</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "webAddress" : "string",
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="createCustomer"/>
+
+					<h2>Create new customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers</td>
+								<td>application/json</td>
+								
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "customerType" : "string",
+  "paperless" : true,
+  "segments" : [ "string" ],
+  "customerNumber" : "string",
+  "agencies" : [ {
+    "agencyCode" : "string"
+  } ],
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "webAddresses" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "webAddress" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "emails" : [ {
+    "id" : 123456789,
+    "emailId" : "string",
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "ratingCd" : "string",
+  "displayValue" : "string",
+  "phones" : [ {
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "phoneNumber" : "string",
+    "doNotSolicitInd" : true,
+    "effectiveTo" : "2016-14-07",
+    "temporary" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "socialNets" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "socialNetId" : "string",
+    "preferredInd" : true
+  } ],
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerStatus" : "string",
+  "preferredWrittenLanguageCd" : "string",
+  "preferredContactMethod" : "string",
+  "addresses" : [ {
+    "doNotSolicitInd" : true,
+    "temporary" : true,
+    "addressLine3" : "string",
+    "addressLine2" : "string",
+    "contactMethod" : "string",
+    "addressLine1" : "string",
+    "city" : "string",
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "stateProvCd" : "string",
+    "postalCode" : "string",
+    "effectiveTo" : "2016-14-07",
+    "countryCd" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "preferredInd" : true
+  } ],
+  "chats" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "chatId" : "string",
+    "preferredInd" : true
+  } ]
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="deleteAddress"/>
+
+					<h2>Removes customer address</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/addresses/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="deleteChat"/>
+
+					<h2>Removes customer chat</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/chats/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em></p><p><em>contactId</em></p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="deleteEmail"/>
+
+					<h2>Remove customer email</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/emails/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="deletePhone"/>
+
+					<h2>Removes customer phone</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/phones/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "phoneNumber" : "string",
+  "doNotSolicitInd" : true,
+  "effectiveTo" : "2016-14-07",
+  "temporary" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="deleteSocialNet"/>
+
+					<h2>Removes customer social net</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/socialNets/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="deleteWebAddress"/>
+
+					<h2>Removes customer web address</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>DELETE</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/webAddresses/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+
+					</div>
+					<div id="operation"><a name="getAddresses"/>
+
+					<h2>Gets all addresses for source customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/addresses</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "doNotSolicitInd" : true,
+  "temporary" : true,
+  "addressLine3" : "string",
+  "addressLine2" : "string",
+  "contactMethod" : "string",
+  "addressLine1" : "string",
+  "city" : "string",
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "stateProvCd" : "string",
+  "postalCode" : "string",
+  "effectiveTo" : "2016-14-07",
+  "countryCd" : "string",
+  "contactType" : "string",
+  "comment" : "string",
+  "preferredInd" : true
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getAnonymousCustomers"/>
+
+					<h2>Get anonymous customer numbers</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/anonymous</td>
+								<td>application/json</td>
+								
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ "string" ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getChats"/>
+
+					<h2>Gets all chats for source customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/chats</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "chatId" : "string",
+  "preferredInd" : true
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getCustomer"/>
+
+					<h2>Get customer by customer number</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "customerType" : "string",
+  "paperless" : true,
+  "segments" : [ "string" ],
+  "customerNumber" : "string",
+  "agencies" : [ {
+    "agencyCode" : "string"
+  } ],
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "webAddresses" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "webAddress" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "emails" : [ {
+    "id" : 123456789,
+    "emailId" : "string",
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "ratingCd" : "string",
+  "displayValue" : "string",
+  "phones" : [ {
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "phoneNumber" : "string",
+    "doNotSolicitInd" : true,
+    "effectiveTo" : "2016-14-07",
+    "temporary" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "socialNets" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "socialNetId" : "string",
+    "preferredInd" : true
+  } ],
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerStatus" : "string",
+  "preferredWrittenLanguageCd" : "string",
+  "preferredContactMethod" : "string",
+  "addresses" : [ {
+    "doNotSolicitInd" : true,
+    "temporary" : true,
+    "addressLine3" : "string",
+    "addressLine2" : "string",
+    "contactMethod" : "string",
+    "addressLine1" : "string",
+    "city" : "string",
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "stateProvCd" : "string",
+    "postalCode" : "string",
+    "effectiveTo" : "2016-14-07",
+    "countryCd" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "preferredInd" : true
+  } ],
+  "chats" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "chatId" : "string",
+    "preferredInd" : true
+  } ]
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getCustomerDetails"/>
+
+					<h2>Gets customers short details</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/details</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em> - start position of the first search result to be included into the result list (customers[offset] .. customers[offset + limit])</p><p><em>limit</em> - size of the result list</p><p><em>sort</em> - sorting allows specifying order of objects in returned collection. Use sortPUT parameter to specify parameter names for sorting in descending order of priority (sort by first parameter, then second and so on). Add minus sign before parameter name to indicate that sorting should be descending. Supported fields: customerType, customerNumber, dsiplayValue</p><p><em>customerNumber</em> - customer number. Multiple parameters can present in search</p><p><em>firstName</em> - customer first name should starting with this</p><p><em>lastName</em> - customer last name should starting with this</p><p><em>legalName</em> - customer legal name should starting with this</p><p><em>gender</em> - customer gender. Supports GenderCd lookup values. Multiple parameters can present in search</p><p><em>maritalStatus</em> - customer marital status. Supports MaritalStatusCd lookup values. Multiple parameters can present in search</p><p><em>customerStatus</em> - customer status. Supports UNQUALIFIED, IN_QUALIFICATION, INVALID, QUALIFIED, CUSTOMER. Multiple parameters can present in search</p><p><em>customerType</em> - customer type. Supports INDV, NONINDV, INDIVIDUAL_LEAD, BUSINESS_LEAD. Multiple parameters can present in search</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "customerType" : "string",
+  "paperless" : true,
+  "segments" : [ "string" ],
+  "customerNumber" : "string",
+  "agencies" : [ {
+    "agencyCode" : "string"
+  } ],
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "webAddresses" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "webAddress" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "emails" : [ {
+    "id" : 123456789,
+    "emailId" : "string",
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "ratingCd" : "string",
+  "displayValue" : "string",
+  "phones" : [ {
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "phoneNumber" : "string",
+    "doNotSolicitInd" : true,
+    "effectiveTo" : "2016-14-07",
+    "temporary" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "socialNets" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "socialNetId" : "string",
+    "preferredInd" : true
+  } ],
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerStatus" : "string",
+  "preferredWrittenLanguageCd" : "string",
+  "preferredContactMethod" : "string",
+  "addresses" : [ {
+    "doNotSolicitInd" : true,
+    "temporary" : true,
+    "addressLine3" : "string",
+    "addressLine2" : "string",
+    "contactMethod" : "string",
+    "addressLine1" : "string",
+    "city" : "string",
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "stateProvCd" : "string",
+    "postalCode" : "string",
+    "effectiveTo" : "2016-14-07",
+    "countryCd" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "preferredInd" : true
+  } ],
+  "chats" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "chatId" : "string",
+    "preferredInd" : true
+  } ]
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getCustomers"/>
+
+					<h2>Returns list of all customers</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em> - start position of the first search result to be included into the result list (customers[offset] .. customers[offset + limit])</p><p><em>limit</em> - size of the result list</p><p><em>sort</em> - sorting allows specifying order of objects in returned collection. Use sortPUT parameter to specify parameter names for sorting in descending order of priority (sort by first parameter, then second and so on). Add minus sign before parameter name to indicate that sorting should be descending. Supported fields: customerType, customerNumber, dsiplayValue</p><p><em>customerNumber</em> - customer number. Multiple parameters can present in search</p><p><em>firstName</em> - customer first name should starting with this</p><p><em>lastName</em> - customer last name should starting with this</p><p><em>legalName</em> - customer legal name should starting with this</p><p><em>gender</em> - customer gender. Supports GenderCd lookup values. Multiple parameters can present in search</p><p><em>maritalStatus</em> - customer marital status. Supports MaritalStatusCd lookup values. Multiple parameters can present in search</p><p><em>customerStatus</em> - customer status. Supports UNQUALIFIED, IN_QUALIFICATION, INVALID, QUALIFIED, CUSTOMER. Multiple parameters can present in search</p><p><em>customerType</em> - customer type. Supports INDV, NONINDV, INDIVIDUAL_LEAD, BUSINESS_LEAD. Multiple parameters can present in search</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "customerType" : "string",
+  "segments" : [ "string" ],
+  "paperless" : true,
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerNumber" : "string",
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "preferredWrittenLanguageCd" : "string",
+  "customerStatus" : "string",
+  "displayValue" : "string",
+  "ratingCd" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getCustomersWithActiveCampaigns"/>
+
+					<h2>Get list of Customers with active Campaigns</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/with-active-campaigns</td>
+								<td>application/json</td>
+								
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "customerType" : "string",
+  "paperless" : true,
+  "segments" : [ "string" ],
+  "customerNumber" : "string",
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "activeCampaigns" : [ {
+    "campaignID" : 123456789,
+    "status" : "string",
+    "name" : "string"
+  } ],
+  "ratingCd" : "string",
+  "displayValue" : "string",
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerStatus" : "string",
+  "preferredWrittenLanguageCd" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getEmails"/>
+
+					<h2>Gets all emails for source customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/emails</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "id" : 123456789,
+  "emailId" : "string",
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getPhones"/>
+
+					<h2>Gets all phones for source customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/phones</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "phoneNumber" : "string",
+  "doNotSolicitInd" : true,
+  "effectiveTo" : "2016-14-07",
+  "temporary" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getSocialNets"/>
+
+					<h2>Gets all social nets for source customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/socialNets</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "socialNetId" : "string",
+  "preferredInd" : true
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getWebAddresses"/>
+
+					<h2>Gets all we addresses for source customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/webAddresses</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "webAddress" : "string",
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateAddress"/>
+
+					<h2>Updates customer address</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/addresses/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "doNotSolicitInd" : true,
+  "temporary" : true,
+  "addressLine3" : "string",
+  "addressLine2" : "string",
+  "contactMethod" : "string",
+  "addressLine1" : "string",
+  "city" : "string",
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "stateProvCd" : "string",
+  "postalCode" : "string",
+  "effectiveTo" : "2016-14-07",
+  "countryCd" : "string",
+  "contactType" : "string",
+  "comment" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateChat"/>
+
+					<h2>Updates customer chat</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/chats/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "chatId" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateCustomer"/>
+
+					<h2>Update existing customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "customerType" : "string",
+  "paperless" : true,
+  "segments" : [ "string" ],
+  "customerNumber" : "string",
+  "agencies" : [ {
+    "agencyCode" : "string"
+  } ],
+  "businessDetails" : {
+    "legalName" : "string",
+    "taxExemptInd" : true,
+    "groupSponsorInd" : true,
+    "useAsReference" : true,
+    "dateStarted" : "2016-14-07",
+    "referenceComment" : "string",
+    "businessType" : "string",
+    "dbaName" : "string",
+    "sicCode" : "string",
+    "entityType" : [ "string" ],
+    "naicsCode" : "string",
+    "legalId" : "string",
+    "referenceCategories" : [ "string" ],
+    "numberOfContinuous" : 123
+  },
+  "webAddresses" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "webAddress" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "emails" : [ {
+    "id" : 123456789,
+    "emailId" : "string",
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "ratingCd" : "string",
+  "displayValue" : "string",
+  "phones" : [ {
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "phoneNumber" : "string",
+    "doNotSolicitInd" : true,
+    "effectiveTo" : "2016-14-07",
+    "temporary" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "preferredInd" : true
+  } ],
+  "socialNets" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "socialNetId" : "string",
+    "preferredInd" : true
+  } ],
+  "individualDetails" : {
+    "middleName" : "string",
+    "occupationDescription" : "string",
+    "lastName" : "string",
+    "title" : "string",
+    "tobaccoCd" : "string",
+    "taxId" : "string",
+    "occupationCd" : "string",
+    "maritalStatusCd" : "string",
+    "birthDate" : "2016-14-07",
+    "firstName" : "string",
+    "genderCd" : "string",
+    "suffix" : "string"
+  },
+  "preferredSpokenLanguageCd" : "string",
+  "sourceCd" : "string",
+  "customerStatus" : "string",
+  "preferredWrittenLanguageCd" : "string",
+  "preferredContactMethod" : "string",
+  "addresses" : [ {
+    "doNotSolicitInd" : true,
+    "temporary" : true,
+    "addressLine3" : "string",
+    "addressLine2" : "string",
+    "contactMethod" : "string",
+    "addressLine1" : "string",
+    "city" : "string",
+    "id" : 123456789,
+    "effectiveFrom" : "2016-14-07",
+    "duration" : 123,
+    "stateProvCd" : "string",
+    "postalCode" : "string",
+    "effectiveTo" : "2016-14-07",
+    "countryCd" : "string",
+    "contactType" : "string",
+    "comment" : "string",
+    "preferredInd" : true
+  } ],
+  "chats" : [ {
+    "id" : 123456789,
+    "doNotSolicitInd" : true,
+    "contactType" : "string",
+    "comment" : "string",
+    "contactMethod" : "string",
+    "chatId" : "string",
+    "preferredInd" : true
+  } ]
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateEmail"/>
+
+					<h2>Update customer email</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/emails/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "emailId" : "string",
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updatePhone"/>
+
+					<h2>Updates customer phone</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/phones/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "effectiveFrom" : "2016-14-07",
+  "duration" : 123,
+  "phoneNumber" : "string",
+  "doNotSolicitInd" : true,
+  "effectiveTo" : "2016-14-07",
+  "temporary" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateSocialNet"/>
+
+					<h2>Updates customer social net</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/socialNets/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "socialNetId" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateWebAddress"/>
+
+					<h2>Updates customer web address</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/webAddresses/{contactId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>contactId</em> - contact identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "id" : 123456789,
+  "doNotSolicitInd" : true,
+  "webAddress" : "string",
+  "contactType" : "string",
+  "comment" : "string",
+  "contactMethod" : "string",
+  "preferredInd" : true
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getOpportunities"/>
+
+					<h2>Returns list of all opportunities</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/opportunities</td>
+								<td>application/json</td>
+								
+								<td><p><em>offset</em> - start position of the first search result to be included into the result list (customers[offset] .. customers[offset + limit])</p><p><em>limit</em> - size of the result list</p><p><em>customerNumber</em> - customer number that is used for opportunities search</p><p><em>opportunityChannelCd</em> - OpportunityChannel lookup value. Multiple parameters can present in search</p><p><em>opportunityLikelihoodCd</em> - OpportunityLikelihood lookup value. Multiple parameters can present in search</p><p><em>status</em> - opportunity status. Supports DRAFT, IN_PIPELINE, QUOTED, CLOSED, INACTIVE. Multiple parameters can present in search</p><p><em>dateCreated</em> - opportunity create date should be after this date</p><p><em>dateModified</em> - opportunity modify date should be after this date</p><p><em>productCd</em> - product code. Multiple parameters can present in search</p><p><em>dateCreatedFrom</em> - opportunity create date should be after this date</p><p><em>dateModifiedFrom</em> - opportunity modify date should be after this date</p><p><em>dateCreatedTo</em> - opportunity create date should be before this date</p><p><em>dateModifiedTo</em> - opportunity modify date should be before this date</p><p><em>campaignId</em> - identifier of campaign  that is associated to opportunity</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "campaignId" : 123456789,
+  "dateModified" : "2016-14-07",
+  "opportunityId" : 123456789,
+  "status" : "string",
+  "opportunityLikelihoodCd" : "string",
+  "description" : "string",
+  "customerNumber" : "string",
+  "closeReasonDescription" : "string",
+  "potential" : {
+    "amount" : 10000.25,
+    "currencyCd" : "string"
+  },
+  "dateCreated" : "2016-14-07",
+  "opportunityChannelCd" : "string",
+  "closeReason" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="closeOpportunity"/>
+
+					<h2>Close existing opportunity</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/opportunities/{opportunityId}/close</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>opportunityId</em> - opportunity identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "opportunityId" : 123456789,
+  "dateModified" : "2016-14-07",
+  "campaignId" : 123456789,
+  "status" : "string",
+  "referral" : {
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "customerNumber" : "string",
+  "opportunityAssociations" : [ {
+    "associationNumber" : "string",
+    "associationType" : "string",
+    "actualPremium" : 10000.25
+  } ],
+  "productsInfo" : [ {
+    "lobCd" : "string",
+    "riskItemCd" : "string",
+    "productName" : "string",
+    "productCd" : "string"
+  } ],
+  "potential" : {
+    "amount" : 10000.25,
+    "currencyCd" : "string"
+  },
+  "description" : "string",
+  "opportunityLikelihoodCd" : "string",
+  "owner" : {
+    "queueName" : "string",
+    "type" : "string",
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "closeReasonDescription" : "string",
+  "dateCreated" : "2016-14-07",
+  "opportunityChannelCd" : "string",
+  "closeReason" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="createOpportunity"/>
+
+					<h2>Create new opportunity for customer</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>POST</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/opportunities</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "opportunityId" : 123456789,
+  "dateModified" : "2016-14-07",
+  "campaignId" : 123456789,
+  "status" : "string",
+  "referral" : {
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "customerNumber" : "string",
+  "opportunityAssociations" : [ {
+    "associationNumber" : "string",
+    "associationType" : "string",
+    "actualPremium" : 10000.25
+  } ],
+  "productsInfo" : [ {
+    "lobCd" : "string",
+    "riskItemCd" : "string",
+    "productName" : "string",
+    "productCd" : "string"
+  } ],
+  "potential" : {
+    "amount" : 10000.25,
+    "currencyCd" : "string"
+  },
+  "description" : "string",
+  "opportunityLikelihoodCd" : "string",
+  "owner" : {
+    "queueName" : "string",
+    "type" : "string",
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "closeReasonDescription" : "string",
+  "dateCreated" : "2016-14-07",
+  "opportunityChannelCd" : "string",
+  "closeReason" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getOpportunities"/>
+
+					<h2>Returns list of customer opportunities</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								<th>Query parameters</th>
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/opportunities</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p></td>
+								<td><p><em>offset</em> - start position of the first search result to be included into the result list (customers[offset] .. customers[offset + limit])</p><p><em>limit</em> - size of the result list</p><p><em>opportunityChannelCd</em> - OpportunityChannel lookup value. Multiple parameters can present in search</p><p><em>opportunityLikelihoodCd</em> - OpportunityLikelihood lookup value. Multiple parameters can present in search</p><p><em>status</em> - opportunity status. Supports DRAFT, IN_PIPELINE, QUOTED, CLOSED, INACTIVE. Multiple parameters can present in search</p><p><em>dateCreated</em> - opportunity create date should be after this date</p><p><em>dateModified</em> - opportunity modify date should be after this date</p><p><em>productCd</em> - product code. Multiple parameters can present in search</p><p><em>dateCreatedFrom</em> - opportunity create date should be after this date</p><p><em>dateModifiedFrom</em> - opportunity modify date should be after this date</p><p><em>dateCreatedTo</em> - opportunity create date should be before this date</p><p><em>dateModifiedTo</em> - opportunity modify date should be before this date</p></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>[ {
+  "campaignId" : 123456789,
+  "dateModified" : "2016-14-07",
+  "opportunityId" : 123456789,
+  "status" : "string",
+  "opportunityLikelihoodCd" : "string",
+  "description" : "string",
+  "customerNumber" : "string",
+  "closeReasonDescription" : "string",
+  "potential" : {
+    "amount" : 10000.25,
+    "currencyCd" : "string"
+  },
+  "dateCreated" : "2016-14-07",
+  "opportunityChannelCd" : "string",
+  "closeReason" : "string"
+} ]</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="getOpportunity"/>
+
+					<h2>Return existing opportunity</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>GET</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/opportunities/{opportunityId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>opportunityId</em> - opportunity identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "opportunityId" : 123456789,
+  "dateModified" : "2016-14-07",
+  "campaignId" : 123456789,
+  "status" : "string",
+  "referral" : {
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "customerNumber" : "string",
+  "opportunityAssociations" : [ {
+    "associationNumber" : "string",
+    "associationType" : "string",
+    "actualPremium" : 10000.25
+  } ],
+  "productsInfo" : [ {
+    "lobCd" : "string",
+    "riskItemCd" : "string",
+    "productName" : "string",
+    "productCd" : "string"
+  } ],
+  "potential" : {
+    "amount" : 10000.25,
+    "currencyCd" : "string"
+  },
+  "description" : "string",
+  "opportunityLikelihoodCd" : "string",
+  "owner" : {
+    "queueName" : "string",
+    "type" : "string",
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "closeReasonDescription" : "string",
+  "dateCreated" : "2016-14-07",
+  "opportunityChannelCd" : "string",
+  "closeReason" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<div id="operation"><a name="updateOpportunity"/>
+
+					<h2>Updates existing opportunity</h2>
+					
+
+					<table>
+						<tbody>
+							<tr>
+								<th>Method</th>
+								<th>Base path</th>
+								<th>URI</th>
+								<th>Media type</th>
+								<th>Path parameters</th>
+								
+							</tr>
+							<tr>
+								<td>PUT</td>
+								<td>/services/customercore-rs/v1</td>
+								<td>/customers/{customerNumber}/opportunities/{opportunityId}</td>
+								<td>application/json</td>
+								<td><p><em>customerNumber</em> - customer number</p><p><em>opportunityId</em> - opportunity identifier</p></td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					<h4>Example data:</h4>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{
+  "opportunityId" : 123456789,
+  "dateModified" : "2016-14-07",
+  "campaignId" : 123456789,
+  "status" : "string",
+  "referral" : {
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "customerNumber" : "string",
+  "opportunityAssociations" : [ {
+    "associationNumber" : "string",
+    "associationType" : "string",
+    "actualPremium" : 10000.25
+  } ],
+  "productsInfo" : [ {
+    "lobCd" : "string",
+    "riskItemCd" : "string",
+    "productName" : "string",
+    "productCd" : "string"
+  } ],
+  "potential" : {
+    "amount" : 10000.25,
+    "currencyCd" : "string"
+  },
+  "description" : "string",
+  "opportunityLikelihoodCd" : "string",
+  "owner" : {
+    "queueName" : "string",
+    "type" : "string",
+    "displayValue" : "string",
+    "loginName" : "string"
+  },
+  "closeReasonDescription" : "string",
+  "dateCreated" : "2016-14-07",
+  "opportunityChannelCd" : "string",
+  "closeReason" : "string"
+}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+	</div>
+	</div>
+	
+	</body>
+</html>

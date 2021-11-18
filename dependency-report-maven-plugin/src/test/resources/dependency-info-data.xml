@@ -1,0 +1,85 @@
+<!-- GroupId = a -->
+<depinfo>
+	<groupId>a</groupId>
+	<description>z</description>
+</depinfo>
+<depinfo>
+	<groupId>a</groupId>
+	<description>c</description>
+</depinfo>
+<depinfo>
+	<groupId>a</groupId>
+	<description>k</description>
+</depinfo>
+<depinfo>
+	<groupId>a</groupId>
+	<description>i</description>
+</depinfo>
+<depinfo>
+	<groupId>a</groupId>
+	<description>a</description>
+</depinfo>
+
+<!-- GroupId = d -->
+<depinfo>
+	<groupId>d</groupId>
+	<description>d</description>
+</depinfo>
+<depinfo>
+	<groupId>d</groupId>
+	<description>c</description>
+</depinfo>
+<depinfo>
+	<groupId>d</groupId>
+	<description>m</description>
+</depinfo>
+
+<!-- GroupId = v -->
+<depinfo>
+	<groupId>v</groupId>
+	<description>r</description>
+</depinfo>
+<depinfo>
+	<groupId>v</groupId>
+	<description>a</description>
+</depinfo>
+<depinfo>
+	<groupId>v</groupId>
+	<description>b</description>
+</depinfo>
+<depinfo>
+	<groupId>v</groupId>
+	<description>z</description>
+</depinfo>
+<depinfo>
+	<groupId>v</groupId>
+	<description>t</description>
+</depinfo>
+<depinfo>
+	<groupId>v</groupId>
+	<description>l</description>
+</depinfo>
+
+<!-- GroupId = x -->
+<depinfo>
+	<groupId>x</groupId>
+	<description>b</description>
+</depinfo>
+
+<!-- GroupId = k -->
+<depinfo>
+	<groupId>k</groupId>
+	<description>i</description>
+</depinfo>
+<depinfo>
+	<groupId>k</groupId>
+	<description>h</description>
+</depinfo>
+<depinfo>
+	<groupId>k</groupId>
+	<description>z</description>
+</depinfo>
+<depinfo>
+	<groupId>k</groupId>
+	<description>v</description>
+</depinfo>

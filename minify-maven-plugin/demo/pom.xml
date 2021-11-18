@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.samaxes.maven</groupId>
+    <artifactId>minify-maven-plugin-demo</artifactId>
+    <version>1.7.2</version>
+    <packaging>war</packaging>
+
+    <name>Minify Maven Plugin Demo</name>
+    <description>How to use the maven plugin minify-maven-plugin.</description>
+    <url>https://github.com/samaxes/minify-maven-plugin</url>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>src</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <warSourceExcludes>**/reset.css,**/fonts.css,**/base.css,**/toc.css,**/samaxesjs.core.js,**/samaxesjs.toc.js</warSourceExcludes>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.2</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <configuration>
+                            <cssSourceFiles>
+                                <cssSourceFile>reset.css</cssSourceFile>
+                                <cssSourceFile>fonts.css</cssSourceFile>
+                                <cssSourceFile>base.css</cssSourceFile>
+                                <cssSourceFile>toc.css</cssSourceFile>
+                            </cssSourceFiles>
+                            <jsSourceFiles>
+                                <jsSourceFile>samaxesjs.core.js</jsSourceFile>
+                                <jsSourceFile>subdir/samaxesjs.toc.js</jsSourceFile>
+                            </jsSourceFiles>
+                            <jsEngine>CLOSURE</jsEngine>
+                            <!--closureCompilationLevel>ADVANCED_OPTIMIZATIONS</closureCompilationLevel-->
+                            <!--closureExterns>
+                                <closureExtern>extern/external-lib.js</closureExtern>
+                            </closureExterns-->
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>ISO-8859-1</project.build.resourceEncoding>
+        <maven.compiler.source>1.5</maven.compiler.source>
+        <maven.compiler.target>1.5</maven.compiler.target>
+    </properties>
+</project>

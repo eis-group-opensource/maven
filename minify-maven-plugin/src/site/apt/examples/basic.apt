@@ -1,0 +1,49 @@
+ ------
+ Basic Configuration
+ ------
+ Samuel Santos
+ ------
+ 2013-09-08
+ ------
+
+Basic Configuration
+
+  The only requirement for Minify Maven Plugin to run is to have source files to process.
+
++---+
+<project>
+  <!-- ... -->
+  <build>
+    <plugins>
+      <!-- ... -->
+      <plugin>
+        <groupId>com.samaxes.maven</groupId>
+        <artifactId>minify-maven-plugin</artifactId>
+        <version>1.7.2</version>
+        <executions>
+          <execution>
+            <id>default-minify</id>
+            <configuration>
+              <cssSourceFiles>
+                <cssSourceFile>file-1.css</cssSourceFile>
+                <!-- ... -->
+                <cssSourceFile>file-n.css</cssSourceFile>
+              </cssSourceFiles>
+              <jsSourceFiles>
+                <jsSourceFile>file-1.js</jsSourceFile>
+                <!-- ... -->
+                <jsSourceFile>file-n.js</jsSourceFile>
+              </jsSourceFiles>
+            </configuration>
+            <goals>
+              <goal>minify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- ... -->
+    </plugins>
+  </build>
+  <!-- ... -->
+</project>
++---+

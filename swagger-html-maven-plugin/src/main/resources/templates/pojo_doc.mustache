@@ -1,0 +1,49 @@
+<h4>{{classname}}</h4>
+
+{{#vars.empty}}No fields.{{/vars.empty}}
+{{^vars.empty}}
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	{{#vars}}
+	<tr>
+		<td>{{name}}</td>
+		<td>
+			{{#isEnum}}
+				{{datatypeWithEnum}}
+			{{/isEnum}}
+			{{^isEnum}}
+				{{#isPrimitiveType}}
+					{{datatype}}
+				{{/isPrimitiveType}}
+				{{^isPrimitiveType}}
+					{{datatype}}
+				{{/isPrimitiveType}}
+			{{/isEnum}}
+		</td>
+		<td>{{#required}}Required. {{/required}}{{#readOnly}}Readonly. {{/readOnly}} {{description}}</td>
+	</tr>
+	{{/vars}}
+</table>
+{{/vars.empty}}
+
+{{#vars}}
+	{{#isEnum}}
+		<h5>Enum: {{datatypeWithEnum}}</h5>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Value</th>
+			</tr>
+			{{#allowableValues}}{{#enumVars}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{value}}</td>
+			</tr>
+			{{/enumVars}}{{/allowableValues}}
+		</table>
+	{{/isEnum}}
+{{/vars}}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{{{appName}}}</title>
+	</head>
+	<body>
+
+	<div id="contentBox">
+	{{#apiInfo}}
+		<table id="content">
+			<tbody>
+				<tr>
+					<th colspan="3" style="text-align: center;">
+						<h5>Table of Contents</h5>
+					</th>
+				</tr>
+				{{#apis}}
+					{{#operations}}
+						{{#operation}}
+						<tr>
+							<td style="text-align: right;"><strong><code>{{httpMethod}}</code></strong></td>
+							<td><a href="#{{operationId}}"><code>{{path}}</code></a></td>
+							{{#summary}}<td>{{summary}}</td>{{/summary}}
+							{{^summary}}<td>{{operationId}}</td>{{/summary}}
+						</tr>
+						{{/operation}}
+					{{/operations}}
+				{{/apis}}
+			</tbody>
+		</table>
+		
+		<br/>
+		<b>Base path:</b> {{basePathWithoutHost}}
+	{{/apiInfo}}
+
+	<br/>
+
+	<div id="operations">
+	{{#apiInfo}}
+		{{#apis}}
+			{{#operations}}
+				{{#operation}}
+					<div id="operation"><a name="{{operationId}}"/>
+
+					<h2>{{httpMethod}} {{path}} 
+						<small>
+							{{#summary}} ({{summary}}){{/summary}}
+							{{^summary}} ({{operationId}}){{/summary}}
+						</small>
+					</h2>
+					<hr>
+					
+					{{#notes}}<p>{{{notes}}}</p>{{/notes}}
+
+					{{#hasProduces}}Produces: {{#produces}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/produces}}{{/hasProduces}}
+					<br/>
+					{{#hasConsumes}}Consumes: {{#consumes}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/consumes}}{{/hasConsumes}}
+
+					<h3>Parameters</h3>
+
+					{{#hasPathParams}}
+						<h5>Path Parameters</h5>
+						<table>
+							<tbody>
+								<tr>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Description</th>
+								</tr>
+								{{#pathParams}}
+								<tr>
+									<td>{{paramName}}</td>
+									<td>{{dataType}}</td>
+									<td>{{description}}</td>
+								</tr>
+								{{/pathParams}}
+						 	</tbody>
+						</table>
+					{{/hasPathParams}}
+					
+					{{#hasBodyParam}}
+						<h5>Body Parameter</h5>
+						<table>
+							<tbody>
+								<tr>
+									<th>Type</th>
+									<th>Description</th>
+								</tr>
+								{{#bodyParams}}
+								<tr>
+									<td>{{dataType}}</td>
+									<td>{{#required}}Required. {{/required}}{{description}}</td>
+								</tr>
+								{{/bodyParams}}
+							</tbody>
+						</table>
+					{{/hasBodyParam}}
+					
+					{{#hasHeaderParams}}
+						<h5>Header Parameters</h5>
+						<table>
+							<tbody>
+								<tr>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Default value</th>
+									<th>Description</th>
+								</tr>
+								{{#headerParam}}
+								<tr>
+									<td>{{paramName}}</td>
+									<td>{{dataType}}</td>
+									<td>{{defaultValue}}</td>
+									<td>{{#required}}Required. {{/required}}{{description}}</td>
+								</tr>
+								{{/headerParam}}
+							</tbody>
+						</table>
+					{{/hasHeaderParams}}
+					
+					{{#hasQueryParams}}
+						<h5>Query Parameters</h5>
+						<table>
+							<tbody>
+								<tr>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Default value</th>
+									<th>Description</th>
+								</tr>
+								{{#queryParams}}
+								<tr>
+									<td>{{paramName}}</td>
+									<td>{{dataType}}</td>
+									<td>{{defaultValue}}</td>
+									<td>{{#required}}Required. {{/required}}{{description}}</td>
+								</tr>
+								{{/queryParams}}
+							</tbody>
+						</table>
+					{{/hasQueryParams}}
+
+					<h3>Responses</h3>
+					{{#responses}}
+						Status Code: {{code}}<br/>
+						Message: {{message}}<br/>
+						Response Type: {{dataType}}
+						{{#hasExamples}}
+							{{#examples}}
+								<table border="0" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td class="code"><pre>{{{example}}}</pre></td>
+										</tr>
+									</tbody>
+								</table>
+							{{/examples}}
+						{{/hasExamples}}
+							
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td class="code"><pre>{{{jsonSchema}}}</pre></td>
+								</tr>
+							</tbody>
+						</table>
+					{{/responses}}
+					
+					{{#examples}}
+						<h4>Example of successful response:</h4>
+						{{#examples}}
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tbody>
+									<tr>
+										<td class="code"><pre>{{{example}}}</pre></td>
+									</tr>
+								</tbody>
+							</table>
+						{{/examples}}
+					{{/examples}}
+					</div>
+				{{/operation}}
+			{{/operations}}
+		{{/apis}}
+	{{/apiInfo}}
+	</div>
+	{{>model_doc}}
+	</div>
+	
+	</body>
+</html>

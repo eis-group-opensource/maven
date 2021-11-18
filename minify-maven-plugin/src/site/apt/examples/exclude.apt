@@ -1,0 +1,61 @@
+ ------
+ Exclude source files from WAR package
+ ------
+ Samuel Santos
+ ------
+ 2013-09-08
+ ------
+
+Exclude source files from WAR package
+
+  Sometimes we need to exclude the original source files from the final WAR package.
+
+  A possible scenario is when you do not want to make them publicly available via your site for security reasons, or simply want to include only the minified (obfuscated) file resulting from the plugin execution.
+
+  The example below illustrates how to configure Maven WAR Plugin to exclude the undesired source files from the final WAR package.
+
++---+
+<project>
+  <!-- ... -->
+  <build>
+    <plugins>
+      <!-- ... -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceExcludes>**/file-1.css,...,**/file-n.css,**/file-1.js,...,**/file-n.js</warSourceExcludes>
+        </configuration>
+      </plugin>
+      <!-- ... -->
+      <plugin>
+        <groupId>com.samaxes.maven</groupId>
+        <artifactId>minify-maven-plugin</artifactId>
+        <version>1.7.2</version>
+        <executions>
+          <execution>
+            <id>default-minify</id>
+            <configuration>
+              <cssSourceFiles>
+                <cssSourceFile>file-1.css</cssSourceFile>
+                <!-- ... -->
+                <cssSourceFile>file-n.css</cssSourceFile>
+              </cssSourceFiles>
+              <jsSourceFiles>
+                <jsSourceFile>file-1.js</jsSourceFile>
+                <!-- ... -->
+                <jsSourceFile>file-n.js</jsSourceFile>
+              </jsSourceFiles>
+            </configuration>
+            <goals>
+              <goal>minify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- ... -->
+    </plugins>
+  </build>
+  <!-- ... -->
+</project>
++---+

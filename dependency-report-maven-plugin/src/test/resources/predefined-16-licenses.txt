@@ -1,0 +1,16 @@
+antlr:antlr:2.7.6|BSD License|http://www.antlr.org/license.html
+commons-discovery:commons-discovery:0.2|Apache 2.0|http://www.apache.org/licenses/LICENSE-2.0.txt
+javax.servlet.jsp:jsp-api:2.1|CDD LGPL GPL 2.0|https://glassfish.dev.java.net/public/CDDL+GPL.html
+javax.xml:jaxrpc-api:1.1|CDDL|https://github.com/javaee/jax-rpc-ri/blob/master/LICENSE
+org.apache.axis:axis:1.4|Apache
+org.eclipse.emf:common:2.4.0|Eclipse Public License v1.0|http://www.eclipse.org/legal/epl-v10.html
+org.eclipse.emf:ecore:2.4.1|Eclipse Public License v1.0|http://www.eclipse.org/legal/epl-v10.html
+org.eclipse.emf:ecore-xmi:2.4.1|Eclipse Public License v1.0|http://www.eclipse.org/legal/epl-v10.html
+org.json:json:1.0|JSON
+org.primefaces:primefaces-push:5.3-e2|eis-thirdparty
+org.samba.jcifs:jcifs:1.3.19|LGPL 2.1|http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+org.springframework.webflow:spring-faces:2.3.1.RELEASE-e5|eis-thirdparty
+org.springframework.ws:spring-ws-core:2.1.3.RELEASE|Apache 2.0http://www.apache.org/licenses/LICENSE-2.0.txt
+org.springframework.ws:spring-xml:2.1.3.RELEASE|Apache 2.0|http://www.apache.org/licenses/LICENSE-2.0.txt
+oro:oro:2.0.8|Apache
+trove:trove:1.0.2|LGPL 2.1|http://www.gnu.org/licenses/lgpl-2.1.txt
